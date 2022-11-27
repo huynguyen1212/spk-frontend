@@ -5,6 +5,10 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 import 'styles/fonts.css'; // import config font define
 import 'sweetalert2/dist/sweetalert2.min.css';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
+import "antd/dist/antd.css";
+
 // diff import
 import Home from 'containers/Home';
 import Loading from 'components/Loading';
@@ -13,6 +17,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NotFoundPage from 'components/NotFoundPage';
 import { selectAppStore } from './store/selecters';
 import LanguageProvider from './LanguageProvider';
+import LayoutCommon from 'containers/Layout';
 
 function App() {
   const { loading } = useSelector(selectAppStore);
@@ -22,10 +27,15 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Home />
+          <Route>
+              <LayoutCommon>
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                </Switch>
+              </LayoutCommon>
             </Route>
-
             <Route path="*">
               <NotFoundPage />
             </Route>

@@ -1,11 +1,11 @@
 /*
 *
-* About types
+* Students types
 * make by huynq
 */
 import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 
-export interface StoreAbout {}
+export interface StoreStudents {}
 
-export type ActionsAbout = ActionType<typeof actions>;
+export type ActionsStudents = ActionType<typeof actions>;

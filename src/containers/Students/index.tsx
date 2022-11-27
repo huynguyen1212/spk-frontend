@@ -1,24 +1,24 @@
 /*
 *
-* About
+* Students
 * make by huynq
 */
 
 import React, { memo } from 'react';
 import ErrorBound from 'components/ErrorBound';
 import useInjectReducer from 'redux/useInjectReducer';
-import reducersAbout from './store/reducers';
-import WrapAbout from './style';
+import reducersStudents from './store/reducers';
+import WrapStudents from './style';
 
 interface Props {}
 
 // eslint-disable-next-line
-function About({}: Props) {
-useInjectReducer('About', reducersAbout);
+function Students({}: Props) {
+useInjectReducer('Students', reducersStudents);
 return (
 <ErrorBound>
-  <WrapAbout> About </WrapAbout>
+  <WrapStudents> Students </WrapStudents>
 </ErrorBound>
 );
 }
-export default memo(About);
+export default memo(Students);

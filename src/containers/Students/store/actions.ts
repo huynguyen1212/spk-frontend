@@ -1,6 +1,6 @@
 /*
 *
-* About actions
+* Students actions
 * make by huynq
 */
 import * as types from './constants';
