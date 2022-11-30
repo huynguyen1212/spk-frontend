@@ -61,7 +61,6 @@ function LayoutCommon({ children }: Props) {
                   <img src={logo} alt="logo" />
                 </Link>
               </div>
-              <span>SPK</span>
             </div>
 
             <Menu

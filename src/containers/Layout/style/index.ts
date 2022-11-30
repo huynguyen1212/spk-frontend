@@ -17,8 +17,8 @@ const WrapLayout = styled.div`
     height: 64px;
 
     .logo {
-      width: 30px;
-      height: 30px;
+      width: 120px;
+      height: auto;
       margin-right: 5px;
 
       img {
