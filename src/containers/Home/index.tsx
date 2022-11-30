@@ -4,13 +4,13 @@
  *
  */
 
-import React, { memo } from 'react';
-import ErrorBound from 'components/ErrorBound';
-import reducersHome from './store/reducers';
-import useInjectReducer from 'redux/useInjectReducer';
-import { SHome } from './styles';
-import { Col, Row } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { Col, Row } from 'antd';
+import ErrorBound from 'components/ErrorBound';
+import { memo } from 'react';
+import useInjectReducer from 'redux/useInjectReducer';
+import reducersHome from './store/reducers';
+import { SHome } from './styles';
 interface Props {}
 
 // eslint-disable-next-line

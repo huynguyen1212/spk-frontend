@@ -72,7 +72,7 @@ function LayoutCommon({ children }: Props) {
                 if (key === '1') {
                   history.push('/');
                 } else if (key === '2') {
-                  history.push('/meetting');
+                  history.push('/meeting');
                 } else if (key === '3') {
                   history.push('/statistic');
                 }

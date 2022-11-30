@@ -18,6 +18,7 @@ import NotFoundPage from 'components/NotFoundPage';
 import { selectAppStore } from './store/selecters';
 import LanguageProvider from './LanguageProvider';
 import LayoutCommon from 'containers/Layout';
+import Meeting from 'containers/Meeting';
 
 function App() {
   const { loading } = useSelector(selectAppStore);
@@ -32,6 +33,9 @@ function App() {
                 <Switch>
                   <Route exact path="/">
                     <Home />
+                  </Route>
+                  <Route exact path="/meeting">
+                    <Meeting />
                   </Route>
                 </Switch>
               </LayoutCommon>
