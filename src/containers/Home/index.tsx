@@ -11,11 +11,54 @@ import { memo } from 'react';
 import useInjectReducer from 'redux/useInjectReducer';
 import reducersHome from './store/reducers';
 import { SHome } from './styles';
+import Slider from 'react-slick';
+import download1 from 'assets/images/home/download1.png';
+import download2 from 'assets/images/home/download2.png';
+import download3 from 'assets/images/home/download3.png';
+import download4 from 'assets/images/home/download4.png';
+import download5 from 'assets/images/home/download5.png';
+import download6 from 'assets/images/home/download6.png';
+import download7 from 'assets/images/home/download7.png';
+import { Link } from 'react-router-dom';
+
 interface Props {}
 
 // eslint-disable-next-line
 function Home({}: Props) {
   useInjectReducer('Home', reducersHome);
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 7,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <ErrorBound>
@@ -68,269 +111,124 @@ function Home({}: Props) {
           </h4>
         </div>
 
+        <div className="topic">
+          <h2 className="topic_title">
+            Explore <b>Topic</b>
+          </h2>
+
+          <div className="topic_content">
+            <Slider {...settings}>
+              <div className="item bg_fcf1eb">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download1} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_dcf4f8">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download2} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap
+                      <br />
+                      <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_fcf1eb">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download3} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_dcf4f8">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download4} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_fcf1eb">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download5} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_dcf4f8">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download6} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_fcf1eb">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download7} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+
+              <div className="item bg_dcf4f8">
+                <Link to="/">
+                  <div className="img_text">
+                    <span className="img">
+                      <img src={download7} alt="icon" />
+                    </span>
+                    <h4 className="text">
+                      Bootstrap <span>32 Course</span>
+                    </h4>
+                  </div>
+                </Link>
+              </div>
+            </Slider>
+          </div>
+        </div>
+
         <div className="row">
-          <div className="col-lg-12 pt-2">
-            <h2 className="fw-400 font-lg">
-              Explore <b>Categories</b>{' '}
-              <a href="#" className="float-right">
-                <i className="feather-edit text-grey-500 font-xs"></i>
-              </a>
-            </h2>
-          </div>
-
-          <div className="col-lg-12 mt-3">
-            <div className="owl-carousel category-card owl-theme overflow-hidden overflow-visible-xl nav-none">
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fcf1eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download1.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Bootstrap{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fff9eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download2.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        HTML{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#e5f4fb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download3.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Jquery{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#dcf4f8' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download4.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Sass{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fcf1eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download5.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        React{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fff9eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download6.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        JAVA{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#e5f4fb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download7.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Python
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fcf1eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/mongodb.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Mongodb{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fcf1eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download1.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Desinger{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div className="item">
-                <div
-                  className="card cat-card-hover mr-1 w140 border-0 p-4 rounded-lg text-center"
-                  style={{ backgroundColor: '#fff9eb' }}
-                >
-                  <a href="default-channel.html">
-                    <div className="card-body p-2 ml-1 ">
-                      <span className="btn-round-xl bg-white">
-                        <img
-                          src="images/download2.png"
-                          alt="icon"
-                          className="p-2"
-                        />
-                      </span>
-                      <h4 className="fw-600 font-xsss mt-3 mb-0">
-                        Desinger{' '}
-                        <span className="d-block font-xsssss fw-500 text-grey-500 mt-2">
-                          32 Course
-                        </span>
-                      </h4>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="col-lg-12 mt-3"></div>
 
           <div className="col-lg-12 pt-4 mb-3">
             <h2 className="fw-400 font-lg d-block">

@@ -5,9 +5,9 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 import 'styles/fonts.css'; // import config font define
 import 'sweetalert2/dist/sweetalert2.min.css';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 // diff import
 import Home from 'containers/Home';
@@ -28,7 +28,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-          <Route>
+            <Route>
               <LayoutCommon>
                 <Switch>
                   <Route exact path="/">
@@ -40,6 +40,7 @@ function App() {
                 </Switch>
               </LayoutCommon>
             </Route>
+
             <Route path="*">
               <NotFoundPage />
             </Route>
