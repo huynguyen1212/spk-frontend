@@ -121,10 +121,12 @@ export const SHome = styled.div`
   }
 
   .topic {
+    margin-bottom: 20px;
+
     .topic_title {
       font-weight: 400;
       font-size: 25px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 10px;
       font-weight: 400;
       line-height: 1.2;
       color: #111;
@@ -199,6 +201,71 @@ export const SHome = styled.div`
 
       .bg_dcf4f8 {
         background-color: #dcf4f8;
+      }
+    }
+  }
+
+  .language {
+    margin-bottom: 20px;
+
+    .language_title {
+      font-weight: 400;
+      font-size: 25px;
+      margin-bottom: 10px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #111;
+      margin-top: 0;
+    }
+
+    .language_content {
+      .item {
+        margin-right: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        border: 0;
+
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+
+        width: 90% !important;
+
+        .img {
+          overflow: hidden;
+          margin-bottom: 1rem;
+          width: 100%;
+          border-radius: 4px;
+
+          img {
+            vertical-align: middle;
+            border-style: none;
+            width: 100%;
+          }
+        }
+
+        .item_infor {
+          flex: 1 1 auto;
+          min-height: 1px;
+          padding: 1.25rem;
+          padding-top: 0;
+
+          .name {
+          }
+
+          .desc {
+            font-weight: 700;
+            margin-top: 1rem;
+            font-size: 16px;
+            color: #111;
+            line-height: 28px;
+            margin-bottom: 0.5rem;
+          }
+        }
       }
     }
   }

@@ -19,46 +19,16 @@ import download4 from 'assets/images/home/download4.png';
 import download5 from 'assets/images/home/download5.png';
 import download6 from 'assets/images/home/download6.png';
 import download7 from 'assets/images/home/download7.png';
+import language1 from 'assets/images/home/language1.png';
 import { Link } from 'react-router-dom';
+import { settingsLanguage, settingsTopic } from './data';
+import TextColor from 'components/TextColor';
 
 interface Props {}
 
 // eslint-disable-next-line
 function Home({}: Props) {
   useInjectReducer('Home', reducersHome);
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 7,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
 
   return (
     <ErrorBound>
@@ -117,7 +87,7 @@ function Home({}: Props) {
           </h2>
 
           <div className="topic_content">
-            <Slider {...settings}>
+            <Slider {...settingsTopic}>
               <div className="item bg_fcf1eb">
                 <Link to="/">
                   <div className="img_text">
@@ -227,440 +197,93 @@ function Home({}: Props) {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-lg-12 mt-3"></div>
+        <div className="language">
+          <h2 className="language_title">
+            Popular <b> Language</b>
+          </h2>
 
-          <div className="col-lg-12 pt-4 mb-3">
-            <h2 className="fw-400 font-lg d-block">
-              Popular <b> Classes</b>{' '}
-              <a href="#" className="float-right">
-                <i className="feather-edit text-grey-500 font-xs"></i>
-              </a>
-            </h2>
-          </div>
-
-          <div className="col-lg-12 pt-2">
-            <div className="owl-carousel category-card owl-theme overflow-hidden overflow-visible-xl nav-none">
+          <div className="language_content">
+            <Slider {...settingsLanguage}>
               <div className="item">
-                <div className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1 mb-4">
-                  <div className="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      className="video-bttn position-relative d-block"
-                    >
-                      <img src="images/v-1.png" alt="image" className="w-100" />
-                    </a>
-                  </div>
-                  <div className="card-body pt-0">
-                    <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-warning d-inline-block text-warning mr-1">
-                      Python
-                    </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">$</span> 240
-                    </span>
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        className="text-dark text-grey-900"
-                      >
-                        Complete Python Bootcamp From Zero to Hero in Python{' '}
-                      </a>
-                    </h4>
-                    <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {' '}
-                      32 Lesson{' '}
-                    </h6>
-                    <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-6.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-7.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-8.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-3.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li className="last-member">
-                        <a
-                          href="#"
-                          className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-                        >
-                          +2
-                        </a>
-                      </li>
-                      <li className="pl-4 w-auto">
-                        <a href="#" className="fw-500 text-grey-500 font-xssss">
-                          Student apply
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="img">
+                  <img src={language1} alt="img" />
+                </div>
+
+                <div className="item_infor">
+                  <span className="name">
+                    <TextColor text="Python" color="yellow" />
+                  </span>
+
+                  <p className="desc">
+                    Complete Python Bootcamp From Zero to Hero in Python
+                  </p>
                 </div>
               </div>
 
               <div className="item">
-                <div className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1 mb-4">
-                  <div className="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      className="video-bttn position-relative d-block"
-                    >
-                      <img src="images/v-2.png" alt="image" className="w-100" />
-                    </a>
-                  </div>
-                  <div className="card-body pt-0">
-                    <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-danger d-inline-block text-danger mr-1">
-                      Desinger
-                    </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">$</span> 40
-                    </span>
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        className="text-dark text-grey-900"
-                      >
-                        Complete Python Bootcamp From Zero to Hero in Python{' '}
-                      </a>
-                    </h4>
-                    <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {' '}
-                      24 Lesson{' '}
-                    </h6>
-                    <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-6.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-7.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-8.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-3.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li className="last-member">
-                        <a
-                          href="#"
-                          className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-                        >
-                          +2
-                        </a>
-                      </li>
-                      <li className="pl-4 w-auto">
-                        <a href="#" className="fw-500 text-grey-500 font-xssss">
-                          Student apply
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="img">
+                  <img src={language1} alt="img" />
+                </div>
+
+                <div className="item_infor">
+                  <span className="name">
+                    <TextColor text="Python" color="yellow" />
+                  </span>
+
+                  <p className="desc">
+                    Complete Python Bootcamp From Zero to Hero in Python
+                  </p>
                 </div>
               </div>
 
               <div className="item">
-                <div className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1 mb-4">
-                  <div className="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      className="video-bttn position-relative d-block"
-                    >
-                      <img src="images/v-3.png" alt="image" className="w-100" />
-                    </a>
-                  </div>
-                  <div className="card-body pt-0">
-                    <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-success d-inline-block text-success mr-1">
-                      Bootstrap
-                    </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">$</span> 60
-                    </span>
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        className="text-dark text-grey-900"
-                      >
-                        Java Programming Masterclass for Developers
-                      </a>
-                    </h4>
-                    <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {' '}
-                      14 Lesson{' '}
-                    </h6>
-                    <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-6.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-7.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-8.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-3.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li className="last-member">
-                        <a
-                          href="#"
-                          className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-                        >
-                          +2
-                        </a>
-                      </li>
-                      <li className="pl-4 w-auto">
-                        <a href="#" className="fw-500 text-grey-500 font-xssss">
-                          Student apply
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="img">
+                  <img src={language1} alt="img" />
+                </div>
+
+                <div className="item_infor">
+                  <span className="name">
+                    <TextColor text="Python" color="yellow" />
+                  </span>
+
+                  <p className="desc">
+                    Complete Python Bootcamp From Zero to Hero in Python
+                  </p>
                 </div>
               </div>
 
               <div className="item">
-                <div className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1 mb-4">
-                  <div className="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      className="video-bttn position-relative d-block"
-                    >
-                      <img src="images/v-5.jpg" alt="image" className="w-100" />
-                    </a>
-                  </div>
-                  <div className="card-body pt-0">
-                    <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-danger d-inline-block text-danger mr-1">
-                      Develop
-                    </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">$</span> 370
-                    </span>
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        className="text-dark text-grey-900"
-                      >
-                        The Data Science Course Complete Data Science{' '}
-                      </a>
-                    </h4>
-                    <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {' '}
-                      23 Lesson{' '}
-                    </h6>
-                    <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-6.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-7.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-8.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-3.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li className="last-member">
-                        <a
-                          href="#"
-                          className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-                        >
-                          +2
-                        </a>
-                      </li>
-                      <li className="pl-4 w-auto">
-                        <a href="#" className="fw-500 text-grey-500 font-xssss">
-                          Student apply
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="img">
+                  <img src={language1} alt="img" />
+                </div>
+
+                <div className="item_infor">
+                  <span className="name">
+                    <TextColor text="Python" color="yellow" />
+                  </span>
+
+                  <p className="desc">
+                    Complete Python Bootcamp From Zero to Hero in Python
+                  </p>
                 </div>
               </div>
 
               <div className="item">
-                <div className="card course-card w300 p-0 shadow-xss border-0 rounded-lg overflow-hidden mr-1 mb-4">
-                  <div className="card-image w-100 mb-3">
-                    <a
-                      href="default-course-details.html"
-                      className="video-bttn position-relative d-block"
-                    >
-                      <img src="images/v-9.jpg" alt="image" className="w-100" />
-                    </a>
-                  </div>
-                  <div className="card-body pt-0">
-                    <span className="font-xsssss fw-700 pl-3 pr-3 lh-32 text-uppercase rounded-lg ls-2 alert-danger d-inline-block text-danger mr-1">
-                      Develop
-                    </span>
-                    <span className="font-xss fw-700 pl-3 pr-3 ls-2 lh-32 d-inline-block text-success float-right">
-                      <span className="font-xsssss">$</span> 370
-                    </span>
-                    <h4 className="fw-700 font-xss mt-3 lh-28 mt-0">
-                      <a
-                        href="default-course-details.html"
-                        className="text-dark text-grey-900"
-                      >
-                        The Data Science Course Complete Data Science{' '}
-                      </a>
-                    </h4>
-                    <h6 className="font-xssss text-grey-500 fw-600 ml-0 mt-2">
-                      {' '}
-                      23 Lesson{' '}
-                    </h6>
-                    <ul className="memberlist mt-3 mb-2 ml-0 d-block">
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-6.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-7.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-8.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <img
-                            src="images/user-3.png"
-                            alt="user"
-                            className="w30 d-inline-block"
-                          />
-                        </a>
-                      </li>
-                      <li className="last-member">
-                        <a
-                          href="#"
-                          className="bg-greylight fw-600 text-grey-500 font-xssss ls-3 text-center"
-                        >
-                          +2
-                        </a>
-                      </li>
-                      <li className="pl-4 w-auto">
-                        <a href="#" className="fw-500 text-grey-500 font-xssss">
-                          Student apply
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="img">
+                  <img src={language1} alt="img" />
+                </div>
+
+                <div className="item_infor">
+                  <span className="name">
+                    <TextColor text="Python" color="yellow" />
+                  </span>
+
+                  <p className="desc">
+                    Complete Python Bootcamp From Zero to Hero in Python
+                  </p>
                 </div>
               </div>
-            </div>
+            </Slider>
           </div>
         </div>
       </SHome>
