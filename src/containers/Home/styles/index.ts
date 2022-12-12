@@ -62,6 +62,9 @@ export const SHome = styled.div`
         }
 
         .select_input {
+          display: flex;
+          align-items: center;
+
           select {
             line-height: 55px;
             height: 55px;

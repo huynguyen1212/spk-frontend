@@ -38,7 +38,10 @@ function LayoutCommon({ children }: Props) {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
 
+  const isSignedIn = JSON.parse(localStorage.getItem('isSignedIn') || 'false');
+
   const { wallet } = useSelector(selectAppStore);
+
   return (
     <ErrorBound>
       <WrapLayout>
@@ -131,10 +134,11 @@ function LayoutCommon({ children }: Props) {
                       onClick={() => {
                         wallet?.signIn();
                       }}
-                      style={{ height: '40px' }}
+                      className="sign_near"
                     >
-                      {wallet ? wallet?.accountId : 'connect wallet'}
+                      {isSignedIn ? wallet?.accountId : 'CONNECT WALLET'}
                     </button>
+
                     <div className="handle_right_item">
                       <div className="icon">
                         <BellOutlined
@@ -149,7 +153,7 @@ function LayoutCommon({ children }: Props) {
                           style={{ fontSize: '18px', color: '#1890ff' }}
                         />
                       </div>
-                      <div className="icon_hover"></div>
+                      {/* <div className="icon_hover"></div> */}
                     </div>
                     <div className="handle_right_item">
                       <div className="icon">
@@ -157,7 +161,6 @@ function LayoutCommon({ children }: Props) {
                           style={{ fontSize: '18px', color: '#1890ff' }}
                         />
                       </div>
-                      <div className="icon_hover"></div>
                     </div>
                   </div>
                 </div>

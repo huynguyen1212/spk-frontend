@@ -12,48 +12,37 @@ import useInjectReducer from 'redux/useInjectReducer';
 import reducersHome, { selectHomeStore } from './store/reducers';
 import { SHome } from './styles';
 import Slider from 'react-slick';
-import download1 from 'assets/images/home/download1.png';
-import download2 from 'assets/images/home/download2.png';
-import download3 from 'assets/images/home/download3.png';
-import download4 from 'assets/images/home/download4.png';
-import download5 from 'assets/images/home/download5.png';
-import download6 from 'assets/images/home/download6.png';
-import download7 from 'assets/images/home/download7.png';
-import language1 from 'assets/images/home/language1.png';
 import { Link } from 'react-router-dom';
 import { settingsLanguage, settingsTopic } from './data';
 import TextColor from 'components/TextColor';
 import { request } from 'api/axios';
 import API_URL from 'api/url';
-import { getLanguages } from './store/actions';
-import { useSelector } from 'react-redux';
+import { getLanguages, getTopics } from './store/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface Props {}
 
 // eslint-disable-next-line
 function Home({}: Props) {
   useInjectReducer('Home', reducersHome);
-  // const { languages, topics } = useSelector(selectHomeStore);
-
-  const [language, setLanguage] = useState([]);
-  const [topic, setTopic] = useState([]);
-  console.log('topic: ', topic);
+  const { languages, topics } = useSelector(selectHomeStore);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     request({
       method: 'GET',
       url: API_URL.LANGUAGE.GET,
     }).then((res: any) => {
-      setLanguage(res?.data?.data);
+      dispatch(getLanguages(res?.data?.data));
     });
 
     request({
       method: 'GET',
       url: API_URL.TOPIC.GET,
     }).then((res: any) => {
-      setTopic(res?.data?.data);
+      dispatch(getTopics(res?.data?.data));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <ErrorBound>
@@ -89,6 +78,18 @@ function Home({}: Props) {
                       <option value="Mongodb">Mongodb</option>
                       <option value="Desinger">Desinger</option>
                     </select>
+                    
+                    <select>
+                      <option value="Bootstrap">Bootstrap</option>
+                      <option value="HTML">HTML</option>
+                      <option value="Jquery">Jquery</option>
+                      <option value="Sass">Sass</option>
+                      <option value="React">React</option>
+                      <option value="JAVA">JAVA</option>
+                      <option value="Python">Python</option>
+                      <option value="Mongodb">Mongodb</option>
+                      <option value="Desinger">Desinger</option>
+                    </select>
                   </div>
                 </div>
               </Col>
@@ -113,7 +114,7 @@ function Home({}: Props) {
 
           <div className="topic_content">
             <Slider {...settingsTopic}>
-              {topic.map((item: any, index: number) => {
+              {topics.map((item: any, index: number) => {
                 return (
                   <div
                     key={item?.id}
@@ -149,7 +150,7 @@ function Home({}: Props) {
 
           <div className="language_content">
             <Slider {...settingsLanguage}>
-              {language.map((item: any, index: number) => {
+              {languages.map((item: any, index: number) => {
                 return (
                   <div key={item?.id} className="item">
                     <div className="img">

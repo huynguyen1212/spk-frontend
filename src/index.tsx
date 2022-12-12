@@ -24,8 +24,8 @@ const helloNEAR = new HelloNEAR({
 
 // Setup on page load
 window.onload = async () => {
-  const isSignedIn = await wallet.startUp();
-  console.log('isSignedIn::', isSignedIn);
+  // const isSignedIn = await wallet.startUp();
+  // console.log('isSignedIn::', isSignedIn);
   // ReactDOM.render(
   //   <App isSignedIn={isSignedIn} helloNEAR={helloNEAR} wallet={wallet} />,
   //   document.getElementById('root')

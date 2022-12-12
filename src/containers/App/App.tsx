@@ -22,30 +22,33 @@ import Meeting from 'containers/Meeting';
 import { Wallet } from 'near-wallet';
 import { setWallet } from './store/actions';
 import { requestInter } from 'api/axios';
+import API_URL from 'api/url';
 
 function App({ wallet }: { wallet: Wallet }) {
   const { loading } = useSelector(selectAppStore);
-  const dis = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (wallet) dis(setWallet(wallet));
+    if (wallet) dispatch(setWallet(wallet));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet]);
 
   const login = async () => {
     const signin = await wallet.startUp();
+    localStorage.setItem('isSignedIn', JSON.stringify(signin));
+
     if (signin) {
       const walletAddress = wallet.accountId;
-      console.log('walletAddress::', walletAddress);
       requestInter({
         method: 'GET',
-        url: 'user/login',
+        url: API_URL.USER.LOGIN,
         params: { walletAddress: walletAddress },
       }).then(res => {
-        console.log('token::', res.data);
+        localStorage.setItem('token', JSON.stringify(res?.data));
       });
     }
   };
+
   // call api login
   useEffect(() => {
     login();

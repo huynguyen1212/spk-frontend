@@ -67,6 +67,28 @@ const WrapLayout = styled.div`
         margin: 0 -10px;
         cursor: pointer;
 
+        .sign_near {
+          height: 35px;
+          line-height: 40px;
+          letter-spacing: 1px;
+          text-align: center;
+          vertical-align: middle;
+          cursor: pointer;
+          user-select: none;
+          border-radius: 0.25rem;
+          transition: color 0.15s ease-in-out,
+            background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+          background-color: #05f;
+          border: 0;
+          width: 80%;
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+        }
+
         .handle_right_item {
           margin: 0 10px;
           position: relative;

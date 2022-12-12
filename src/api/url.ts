@@ -1,7 +1,6 @@
 const API_URL = {
   USER: {
-    LOGIN: 'api/login',
-    REGISTER: 'api/register',
+    LOGIN: 'user/login',
   },
   LANGUAGE: {
     GET: '/language',
