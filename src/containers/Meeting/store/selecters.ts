@@ -1,8 +1,9 @@
 /*
-*
-* Meeting selecters
-* make by huynq
-*/
-import rootReducer from "redux/root-reducers";
+ *
+ * Meeting selecters
+ * make by huynq
+ */
+import rootReducer from 'redux/root-reducers';
 
-export const selectMeetingStore = ((state: ReturnType<typeof rootReducer>) => state.Meeting)
+export const selectMeetingStore = (state: ReturnType<typeof rootReducer>) =>
+  state.Meeting;

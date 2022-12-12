@@ -4,4 +4,5 @@
  *
  */
 
-export const TEST = 'HOME/TEST';
+export const LANGUAGE = 'HOME/LANGUAGE';
+export const TOPIC = 'HOME/TOPIC';

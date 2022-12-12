@@ -7,9 +7,9 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
 import ErrorBound from 'components/ErrorBound';
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import useInjectReducer from 'redux/useInjectReducer';
-import reducersHome from './store/reducers';
+import reducersHome, { selectHomeStore } from './store/reducers';
 import { SHome } from './styles';
 import Slider from 'react-slick';
 import download1 from 'assets/images/home/download1.png';
@@ -23,12 +23,37 @@ import language1 from 'assets/images/home/language1.png';
 import { Link } from 'react-router-dom';
 import { settingsLanguage, settingsTopic } from './data';
 import TextColor from 'components/TextColor';
+import { request } from 'api/axios';
+import API_URL from 'api/url';
+import { getLanguages } from './store/actions';
+import { useSelector } from 'react-redux';
 
 interface Props {}
 
 // eslint-disable-next-line
 function Home({}: Props) {
   useInjectReducer('Home', reducersHome);
+  // const { languages, topics } = useSelector(selectHomeStore);
+
+  const [language, setLanguage] = useState([]);
+  const [topic, setTopic] = useState([]);
+  console.log('topic: ', topic);
+
+  useEffect(() => {
+    request({
+      method: 'GET',
+      url: API_URL.LANGUAGE.GET,
+    }).then((res: any) => {
+      setLanguage(res?.data?.data);
+    });
+
+    request({
+      method: 'GET',
+      url: API_URL.TOPIC.GET,
+    }).then((res: any) => {
+      setTopic(res?.data?.data);
+    });
+  }, []);
 
   return (
     <ErrorBound>
@@ -88,111 +113,31 @@ function Home({}: Props) {
 
           <div className="topic_content">
             <Slider {...settingsTopic}>
-              <div className="item bg_fcf1eb">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download1} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
+              {topic.map((item: any, index: number) => {
+                return (
+                  <div
+                    key={item?.id}
+                    className={`item ${
+                      index % 2 === 0 ? 'bg_dcf4f8' : 'bg_fcf1eb'
+                    }`}
+                  >
+                    <Link to="/">
+                      <div className="img_text">
+                        <span className="img">
+                          <img
+                            src={`${process.env.REACT_APP_CDN}${item?.image?.path}`}
+                            alt="icon"
+                          />
+                        </span>
+                        <h4 className="text">
+                          {item?.name.slice(0, 6)}{' '}
+                          <span>{item?.desc.slice(0, 6)}</span>
+                        </h4>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-              </div>
-
-              <div className="item bg_dcf4f8">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download2} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap
-                      <br />
-                      <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="item bg_fcf1eb">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download3} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="item bg_dcf4f8">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download4} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="item bg_fcf1eb">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download5} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="item bg_dcf4f8">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download6} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="item bg_fcf1eb">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download7} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="item bg_dcf4f8">
-                <Link to="/">
-                  <div className="img_text">
-                    <span className="img">
-                      <img src={download7} alt="icon" />
-                    </span>
-                    <h4 className="text">
-                      Bootstrap <span>32 Course</span>
-                    </h4>
-                  </div>
-                </Link>
-              </div>
+                );
+              })}
             </Slider>
           </div>
         </div>
@@ -204,85 +149,29 @@ function Home({}: Props) {
 
           <div className="language_content">
             <Slider {...settingsLanguage}>
-              <div className="item">
-                <div className="img">
-                  <img src={language1} alt="img" />
-                </div>
+              {language.map((item: any, index: number) => {
+                return (
+                  <div key={item?.id} className="item">
+                    <div className="img">
+                      <img
+                        src={`${process.env.REACT_APP_CDN}${item?.image?.path}`}
+                        alt="icon"
+                      />
+                    </div>
 
-                <div className="item_infor">
-                  <span className="name">
-                    <TextColor text="Python" color="yellow" />
-                  </span>
+                    <div className="item_infor">
+                      <span className="name">
+                        <TextColor
+                          text={`${item?.name}`}
+                          color={`${index % 2 === 0 ? 'yellow' : 'green'}`}
+                        />
+                      </span>
 
-                  <p className="desc">
-                    Complete Python Bootcamp From Zero to Hero in Python
-                  </p>
-                </div>
-              </div>
-
-              <div className="item">
-                <div className="img">
-                  <img src={language1} alt="img" />
-                </div>
-
-                <div className="item_infor">
-                  <span className="name">
-                    <TextColor text="Python" color="yellow" />
-                  </span>
-
-                  <p className="desc">
-                    Complete Python Bootcamp From Zero to Hero in Python
-                  </p>
-                </div>
-              </div>
-
-              <div className="item">
-                <div className="img">
-                  <img src={language1} alt="img" />
-                </div>
-
-                <div className="item_infor">
-                  <span className="name">
-                    <TextColor text="Python" color="yellow" />
-                  </span>
-
-                  <p className="desc">
-                    Complete Python Bootcamp From Zero to Hero in Python
-                  </p>
-                </div>
-              </div>
-
-              <div className="item">
-                <div className="img">
-                  <img src={language1} alt="img" />
-                </div>
-
-                <div className="item_infor">
-                  <span className="name">
-                    <TextColor text="Python" color="yellow" />
-                  </span>
-
-                  <p className="desc">
-                    Complete Python Bootcamp From Zero to Hero in Python
-                  </p>
-                </div>
-              </div>
-
-              <div className="item">
-                <div className="img">
-                  <img src={language1} alt="img" />
-                </div>
-
-                <div className="item_infor">
-                  <span className="name">
-                    <TextColor text="Python" color="yellow" />
-                  </span>
-
-                  <p className="desc">
-                    Complete Python Bootcamp From Zero to Hero in Python
-                  </p>
-                </div>
-              </div>
+                      <p className="desc">{item?.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </Slider>
           </div>
         </div>

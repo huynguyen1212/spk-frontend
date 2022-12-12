@@ -9,8 +9,8 @@ import * as types from './constants';
 import rootReducer from 'redux/root-reducers';
 
 const initState: HomeStore = {
-  test: true,
-  str: '',
+  languages: [],
+  topics: [],
 };
 
 const reducersHome: Reducer<HomeStore, ActionsHome> = (
@@ -18,10 +18,16 @@ const reducersHome: Reducer<HomeStore, ActionsHome> = (
   actions: ActionsHome,
 ) => {
   switch (actions.type) {
-    case types.TEST: {
+    case types.LANGUAGE: {
       return {
         ...state,
-        test: actions.payload,
+        languages: actions.payload,
+      };
+    }
+    case types.TOPIC: {
+      return {
+        ...state,
+        topics: actions.payload,
       };
     }
     default:
