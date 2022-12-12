@@ -3,18 +3,24 @@
  * App reducers
  *
  */
-import { Reducer } from "redux";
-import * as types from "./constants";
-import { ActionsApp, AppStore } from "./types";
+import { Reducer } from 'redux';
+import * as types from './constants';
+import { ActionsApp, AppStore } from './types';
 
 const initState: AppStore = {
-  lang: "vi",
+  lang: 'vi',
   loading: false,
+  wallet: undefined,
+  contracts: {
+    app: undefined,
+    token: undefined,
+    staking: undefined,
+  },
 };
 
 const reducersApp: Reducer<AppStore, ActionsApp> = (
   state = initState,
-  actions: ActionsApp
+  actions: ActionsApp,
 ) => {
   switch (actions.type) {
     case types.LOADING: {
@@ -24,6 +30,10 @@ const reducersApp: Reducer<AppStore, ActionsApp> = (
     case types.LANGUAGE: {
       return { ...state, lang: actions.payload };
     }
+    case types.WALLET: {
+      return { ...state, wallet: actions.payload };
+    }
+
     default:
       return { ...state };
   }

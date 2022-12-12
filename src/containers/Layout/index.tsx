@@ -23,6 +23,8 @@ import {
 import { Layout, Menu } from 'antd';
 import logo from 'assets/images/logo.png';
 import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAppStore } from 'containers/App/store/selecters';
 
 interface Props {
   children: ReactChild | ReactChildren;
@@ -36,6 +38,7 @@ function LayoutCommon({ children }: Props) {
   const [collapsed, setCollapsed] = useState(false);
   const history = useHistory();
 
+  const { wallet } = useSelector(selectAppStore);
   return (
     <ErrorBound>
       <WrapLayout>
@@ -124,6 +127,14 @@ function LayoutCommon({ children }: Props) {
                   </form>
 
                   <div className="handle_right">
+                    <button
+                      onClick={() => {
+                        wallet?.signIn();
+                      }}
+                      style={{ height: '40px' }}
+                    >
+                      {wallet ? wallet?.accountId : 'connect wallet'}
+                    </button>
                     <div className="handle_right_item">
                       <div className="icon">
                         <BellOutlined
