@@ -16,6 +16,24 @@ export type AppStore = {
     staking: any;
     token: any;
   };
+  me: {
+    bio: any;
+    bob: any;
+    createdAt: any;
+    deletedAt: any;
+    email: any;
+    gender: any;
+    id: any;
+    image: any;
+    languages: any;
+    name: any;
+    phone: any;
+    status: any;
+    topics: any;
+    type: any;
+    updatedAt: any;
+    walletAddress: any;
+  };
 };
 
 export type ActionsApp = ActionType<typeof actions>;

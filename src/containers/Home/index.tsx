@@ -7,7 +7,7 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
 import ErrorBound from 'components/ErrorBound';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import useInjectReducer from 'redux/useInjectReducer';
 import reducersHome, { selectHomeStore } from './store/reducers';
 import { SHome } from './styles';
@@ -103,7 +103,7 @@ function Home({}: Props) {
           </div>
 
           <h4 className="popular">
-            <b>Popular Search :</b> Designer, Developer, PHP, HTML, CSS, SCSS
+            <b>Popular Search :</b> English, China, Vietnamese
           </h4>
         </div>
 

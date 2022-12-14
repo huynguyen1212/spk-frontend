@@ -16,6 +16,24 @@ const initState: AppStore = {
     token: undefined,
     staking: undefined,
   },
+  me: {
+    bio: undefined,
+    bob: undefined,
+    createdAt: undefined,
+    deletedAt: undefined,
+    email: undefined,
+    gender: undefined,
+    id: undefined,
+    image: undefined,
+    languages: undefined,
+    name: undefined,
+    phone: undefined,
+    status: undefined,
+    topics: undefined,
+    type: undefined,
+    updatedAt: undefined,
+    walletAddress: undefined,
+  },
 };
 
 const reducersApp: Reducer<AppStore, ActionsApp> = (
@@ -32,6 +50,10 @@ const reducersApp: Reducer<AppStore, ActionsApp> = (
     }
     case types.WALLET: {
       return { ...state, wallet: actions.payload };
+    }
+
+    case types.ME: {
+      return { ...state, me: actions.payload };
     }
 
     default:

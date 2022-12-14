@@ -19,6 +19,7 @@ import {
   BellOutlined,
   AppstoreOutlined,
   UserOutlined,
+  UserSwitchOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import logo from 'assets/images/logo.png';
@@ -77,8 +78,10 @@ function LayoutCommon({ children }: Props) {
                 if (key === '1') {
                   history.push('/');
                 } else if (key === '2') {
-                  history.push('/meeting');
+                  history.push('/booking');
                 } else if (key === '3') {
+                  history.push('/meeting');
+                } else if (key === '4') {
                   history.push('/statistic');
                 }
               }}
@@ -90,11 +93,16 @@ function LayoutCommon({ children }: Props) {
                 },
                 {
                   key: '2',
+                  icon: <UserSwitchOutlined />,
+                  label: 'Booking',
+                },
+                {
+                  key: '3',
                   icon: <VideoCameraOutlined />,
                   label: 'Meeting',
                 },
                 {
-                  key: '3',
+                  key: '4',
                   icon: <AreaChartOutlined />,
                   label: 'Statistic',
                 },

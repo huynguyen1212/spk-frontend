@@ -20,9 +20,10 @@ import LanguageProvider from './LanguageProvider';
 import LayoutCommon from 'containers/Layout';
 import Meeting from 'containers/Meeting';
 import { Wallet } from 'near-wallet';
-import { setWallet } from './store/actions';
-import { requestInter } from 'api/axios';
+import { getMe, setWallet } from './store/actions';
+import { requestInter, requestToken } from 'api/axios';
 import API_URL from 'api/url';
+import Booking from 'containers/Booking';
 
 function App({ wallet }: { wallet: Wallet }) {
   const { loading } = useSelector(selectAppStore);
@@ -30,6 +31,18 @@ function App({ wallet }: { wallet: Wallet }) {
 
   useEffect(() => {
     if (wallet) dispatch(setWallet(wallet));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wallet]);
+
+  useEffect(() => {
+    if (wallet) {
+      requestToken({
+        method: 'GET',
+        url: API_URL.USER.ME,
+      }).then((res: any) => {
+        dispatch(getMe(res?.data?.data));
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet]);
 
@@ -65,6 +78,9 @@ function App({ wallet }: { wallet: Wallet }) {
                 <Switch>
                   <Route exact path="/">
                     <Home />
+                  </Route>
+                  <Route exact path="/booking">
+                    <Booking />
                   </Route>
                   <Route exact path="/meeting">
                     <Meeting />
